@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="给两人 Game Jam 团队的 GitHub Desktop 中文操作课。照着界面完成一次分支、提交、推送、合并和同步，无需命令行。">
+  <meta name="theme-color" content="#f7f7f2">
+  <title>一起提交 · GitHub Desktop 中文协作课</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232c624c'/%3E%3Cpath d='M11 9v14M21 9v4c0 5-10 2-10 7' fill='none' stroke='white' stroke-width='2.3'/%3E%3Ccircle cx='11' cy='8' r='3' fill='white'/%3E%3Ccircle cx='21' cy='8' r='3' fill='white'/%3E%3Ccircle cx='11' cy='24' r='3' fill='white'/%3E%3C/svg%3E">
+  <style>
+    :root{--paper:#f7f7f2;--white:#fff;--ink:#222e29;--muted:#66746c;--line:#dce2d9;--green:#2c624c;--pale:#eaf1e8;--lime:#d9e9b8;--blue:#0969da;--sans:"Segoe UI","PingFang SC","Microsoft YaHei",system-ui,sans-serif;--mono:Consolas,"SFMono-Regular",monospace}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65}button,input{font:inherit}button,a{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:default}a{color:var(--green);text-underline-offset:3px}a:hover{color:#183c2d}button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid #6ea381;outline-offset:4px}button{color:inherit}svg{display:block;flex-shrink:0}.shell{width:min(1380px,100%);margin:auto;padding:0 42px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:750;letter-spacing:.03em}.brand-icon{width:33px;height:33px;border-radius:9px;background:var(--green);color:white;display:grid;place-items:center}.tag{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}.topnote{font-size:12px;color:var(--muted)}.intro{padding:37px 0 26px;display:flex;justify-content:space-between;align-items:flex-end;gap:30px}.eyebrow{font-size:11px;letter-spacing:.17em;font-weight:700;color:var(--green);margin:0 0 9px}h1{font-weight:720;letter-spacing:-.055em;font-size:clamp(27px,3.15vw,43px);line-height:1.3;margin:0 0 11px}.intro p{margin:0;color:var(--muted);font-size:14px}.session{font-size:12px;text-align:right;color:var(--muted);flex-shrink:0}.session strong{display:block;font-size:16px;color:var(--ink);font-weight:600}.rolebar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0 22px}.role-control{display:flex;align-items:center;gap:13px}.label{font-size:12px;color:var(--muted)}.segmented{display:flex;background:#e9ede6;padding:4px;border-radius:9px;gap:3px}.role{border:0;border-radius:6px;background:transparent;padding:7px 15px;font-size:12px;white-space:nowrap}.role small{font-family:var(--mono);font-size:10px;opacity:.65;margin-left:5px}.role[aria-pressed=true]{background:#fff;box-shadow:0 1px 4px #1f302311;color:var(--green);font-weight:650}.repo-short{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);min-width:0}.repo-short a{font-family:var(--mono);font-size:11px;overflow-wrap:anywhere}.privacy{font-size:10px;border:1px solid #bdc9be;border-radius:20px;padding:0 6px;color:var(--muted)}.concept{display:grid;grid-template-columns:repeat(3,1fr);background:var(--white);border:1px solid var(--line);border-radius:12px;overflow:hidden}.concept-button{position:relative;background:transparent;text-align:left;border:0;border-right:1px solid var(--line);padding:16px 21px;display:flex;align-items:center;gap:13px}.concept-button:last-child{border-right:0}.concept-button[aria-pressed=true]{background:var(--pale)}.concept-num{font:12px var(--mono);color:#809484}.concept-button strong{display:block;font-size:12px;font-weight:650}.concept-button span span{display:block;font-size:10px;color:var(--muted)}.concept-explain{font-size:12px;color:var(--muted);min-height:38px;padding:9px 2px 14px}.concept-explain b{font-weight:650;color:var(--green)}.workspace{display:grid;grid-template-columns:205px minmax(0,1fr);gap:29px;padding-top:15px;border-top:1px solid var(--line);align-items:start}.stepnav{position:sticky;top:22px;padding-bottom:16px}.nav-heading{display:flex;justify-content:space-between;align-items:center;margin:3px 0 15px;font-size:11px;color:var(--muted)}.progress-track{height:3px;background:#e1e7dd;margin:0 0 16px;border-radius:3px}.progress-fill{height:100%;background:var(--green);border-radius:3px;transition:width .2s}.steps{display:grid;gap:4px}.stepbutton{display:flex;width:100%;align-items:center;gap:11px;text-align:left;border:0;border-radius:8px;background:transparent;padding:10px 9px;font-size:12px;color:var(--muted)}.stepbutton:hover{background:#edf0e9}.stepbutton[aria-current=step]{background:var(--green);color:white}.stepnum{width:23px;height:23px;display:grid;place-items:center;flex-shrink:0;border:1px solid #cfd8cc;border-radius:50%;font:10px var(--mono)}.stepbutton[aria-current=step] .stepnum{border-color:#ffffff65}.stepbutton.is-done:not([aria-current=step]) .stepnum{background:#e0ecda;border-color:#e0ecda;color:var(--green)}.nav-foot{font-size:10px;color:var(--muted);line-height:1.8;padding:15px 8px 0}.nav-foot button{display:block;margin:8px 0 0;background:none;border:0;color:var(--muted);font-size:10px;text-decoration:underline;text-underline-offset:3px;padding:0}.lesson{min-width:0}.lesson-top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:0 0 21px}.lesson-kicker{margin:0 0 7px;font-size:10px;letter-spacing:.13em;color:var(--green);font-weight:650}.lesson h2{font-size:26px;line-height:1.35;letter-spacing:-.035em;margin:0;font-weight:700}.stepcount{font:11px var(--mono);color:#8b968a;padding-top:5px;white-space:nowrap}.lesson-body{display:grid;grid-template-columns:minmax(0,.83fr) minmax(0,1.35fr);gap:27px;align-items:start}.instructions{padding-top:0;min-width:0}.lead{font-size:14px;line-height:1.85;margin:0 0 18px}.action-list{counter-reset:actions;list-style:none;padding:0;margin:0;display:grid;gap:15px}.action-list li{position:relative;padding-left:26px;font-size:12px;line-height:1.85;color:#445349}.action-list li:before{counter-increment:actions;content:counter(actions);position:absolute;left:0;top:3px;width:17px;height:17px;border:1px solid #bbcbb7;border-radius:50%;display:grid;place-items:center;font:9px var(--mono);color:var(--green)}.action-list strong{font-weight:650;color:var(--ink)}.english{color:#79847c;font-size:10px;white-space:normal}.path{display:block;border-left:2px solid #b8cba5;background:#edf1e9;padding:9px 11px;margin:9px 0;font:10px/1.8 var(--mono);overflow-wrap:anywhere;user-select:all;color:#41503c}.inline-code{font:11px var(--mono);padding:2px 4px;background:#e8ece4;border-radius:3px;overflow-wrap:anywhere}.success-check{margin-top:21px;border-top:1px solid var(--line);padding-top:14px;font-size:11px;line-height:1.8;color:var(--green)}.success-check strong{display:block;font-size:10px;letter-spacing:.05em;margin-bottom:3px}.warning{margin-top:14px;padding:10px 12px;font-size:11px;line-height:1.8;background:#f0eee0;border-radius:6px;color:#655c39}.external-link{font-size:11px;display:inline-flex;align-items:center;gap:5px;margin-top:10px}.demo-area{min-width:0}.demo-label{display:flex;justify-content:space-between;gap:10px;margin-bottom:9px;font-size:10px;color:var(--muted)}.demo-label b{font-weight:500;color:var(--green)}.desktop{background:#fff;border:1px solid #bec7be;border-radius:9px;overflow:hidden;box-shadow:0 12px 30px #2b3c2c0c;min-height:345px}.desktop-titlebar{height:31px;display:flex;justify-content:space-between;align-items:center;background:#f0f2ef;border-bottom:1px solid #e1e5de;padding:0 11px;font-size:10px;color:#68716a}.window-controls{letter-spacing:12px;font-size:10px;color:#8b948b}.desktop-menu{display:flex;gap:15px;padding:6px 12px;border-bottom:1px solid #e6e9e3;font-size:9px}.desktop-toolbar{display:grid;grid-template-columns:1.4fr 1fr .95fr;background:#f4f6f2;border-bottom:1px solid #dce2d9}.tool{padding:10px 10px;min-width:0;border:0;border-right:1px solid #dce2d9;background:transparent;text-align:left;font-size:10px;line-height:1.3}.tool:last-child{border-right:0}.tool small{display:block;color:#828e82;font-size:8px;margin-bottom:3px}.tool strong{font-size:9px;font-weight:600;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.desktop-content{display:grid;grid-template-columns:35% 65%;min-height:244px}.file-sidebar{background:#fafbf8;border-right:1px solid #e0e5db;padding:0 0 11px;min-width:0;display:flex;flex-direction:column}.file-tabs{display:flex;border-bottom:1px solid #e2e6de;font-size:9px}.file-tabs span{padding:9px 10px}.file-tabs span:first-child{border-bottom:2px solid #52815c;color:var(--green);font-weight:600}.file-row{padding:10px 9px;display:flex;align-items:center;gap:5px;font-size:8px;overflow-wrap:anywhere;background:#eaf0e6}.file-row.muted-row{background:transparent;color:#879382}.tiny-checkbox{color:#628667;font-size:10px;flex-shrink:0}.commit-form{margin-top:auto;padding:11px 9px 0}.fake-input{border:1px solid #d2dbcd;border-radius:4px;background:#fff;padding:6px;font-size:8px;color:#889482;margin-bottom:5px;overflow-wrap:anywhere}.fake-input.filled{color:#40513d}.commit-description{height:35px;color:#9ba395}.desktop-action{width:100%;background:var(--green);color:white;border:1px solid #24533f;border-radius:4px;min-height:29px;padding:5px 7px;font-size:9px;font-weight:550;line-height:1.5}.desktop-action small{display:block;font-size:8px;font-weight:400;opacity:.8}.desktop-action:disabled{background:#acc4a8;border-color:#acc4a8;color:#fff}.screen-main{min-width:0;position:relative;padding:18px 15px;font-size:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px}.screen-main h3{font-size:15px;font-weight:650;margin:0 0 4px}.screen-main p{font-size:9px;color:#7a8876;line-height:1.85;margin:0;max-width:230px}.screen-symbol{display:grid;place-items:center;background:#edf3e8;border-radius:50%;height:45px;width:45px;margin-bottom:6px;color:#507248;font-size:23px}.screen-main .desktop-action{max-width:220px}.screen-main .outline-action{width:auto;background:#fff;color:#3e6648;border:1px solid #c6d2be;min-height:27px;border-radius:4px;font-size:9px;padding:5px 10px}.hotspot{position:relative;box-shadow:0 0 0 3px #acd789;z-index:1}.hotspot:after{content:"点这里试试看";position:absolute;right:2px;top:-20px;color:#527b3c;font-size:8px;white-space:nowrap;background:#f3f8ed;padding:2px 5px;border-radius:4px;box-shadow:0 1px 4px #1c302015}.toolbar-hotspot:after{top:auto;bottom:-21px;right:4px}.demo-callout{display:flex;align-items:flex-start;gap:7px;padding:12px 2px;font-size:10px;color:#6d7b65;line-height:1.8;min-height:55px}.demo-callout .dot{width:5px;height:5px;border-radius:50%;background:#7e9b68;margin-top:6px;flex-shrink:0}.demo-action-note{font-size:10px;color:var(--green);padding:8px 11px;background:var(--pale);border-radius:5px;display:none;margin-bottom:8px}.demo-action-note.visible{display:block}.modal{width:100%;max-width:260px;border:1px solid #d7dfd0;background:#fff;border-radius:6px;text-align:left;box-shadow:0 6px 18px #22301e12;padding:13px}.modal h3{font-size:11px;border-bottom:1px solid #e5e9df;padding-bottom:8px;margin-bottom:9px}.modal label{display:block;font-size:9px;color:#6c7b64;margin:8px 0 4px}.modal .fake-input{font-size:9px;margin-bottom:8px}.path-in-modal{font-family:var(--mono);font-size:8px;overflow-wrap:anywhere;color:#5d6c56;line-height:1.7}.diff-view{width:100%;text-align:left;border:1px solid #e2e7dc;font:8px/2 var(--mono);border-radius:4px;overflow:hidden}.diff-heading{padding:4px 8px;background:#f4f6f0;color:#78856f;border-bottom:1px solid #e0e7d9}.diff-old{padding:6px 8px;background:#fff0ed;color:#9b5c50}.diff-new{padding:6px 8px;background:#e9f5e1;color:#41653d}.browser-chrome{height:30px;background:#f0f2ee;padding:6px 13px;font:8px var(--mono);color:#7c8777;border-bottom:1px solid #dde4d7;display:flex;align-items:center;gap:11px}.address{border:1px solid #d6dfcf;border-radius:4px;background:#fff;padding:3px 8px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.github-screen{min-height:274px;padding:19px 21px;text-align:left}.gh-wordmark{font-size:11px;font-weight:700;border-bottom:1px solid #e2e7dc;padding-bottom:12px;margin-bottom:16px}.pr-title{font-size:15px;font-weight:650;line-height:1.5;margin-bottom:9px}.pr-badge{display:inline-flex;align-items:center;gap:5px;border-radius:20px;background:#e3f2dc;color:#426f3a;padding:2px 8px;font-size:9px;margin-bottom:11px}.branch-line{font-size:9px;color:#78856e;line-height:1.8;overflow-wrap:anywhere}.branch-line code{font:9px var(--mono);background:#edf1e8;padding:2px 5px;color:#4f6945;border-radius:3px}.pr-check{font-size:9px;border:1px solid #d8e2ce;border-radius:5px;padding:11px;margin:14px 0}.github-screen .desktop-action{width:auto;padding:7px 14px}.done-box{display:flex;gap:10px;align-items:flex-start;padding:14px 16px;background:#edf2e8;border:1px solid #d8e3ce;border-radius:8px;font-size:12px;line-height:1.7;margin-top:17px;cursor:pointer}.done-box input{margin:4px 0 0;accent-color:var(--green);width:15px;height:15px;flex-shrink:0}.done-box small{display:block;font-size:10px;color:var(--muted);margin-top:2px}.lesson-nav{display:flex;justify-content:space-between;gap:15px;margin-top:18px;padding-bottom:25px}.navbtn{border:1px solid #cfd9c7;background:transparent;padding:9px 16px;border-radius:6px;font-size:11px;min-height:38px}.navbtn:hover{background:#edf2e7}.navbtn.primary{background:var(--green);color:#fff;border-color:var(--green)}.navbtn:disabled{opacity:.35}.support{margin:25px 0 0;padding:28px 0;border-top:1px solid var(--line)}.support-heading{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;gap:12px}.support-heading h2{font-size:19px;letter-spacing:-.03em;margin:0}.support-heading span{font-size:11px;color:var(--muted)}.dictionary{display:grid;grid-template-columns:repeat(3,1fr);gap:0 30px}.term{padding:12px 0;border-bottom:1px solid #e1e6db;min-width:0}.term-head{display:flex;justify-content:space-between;gap:6px;align-items:baseline}.term b{font-size:12px;font-weight:650}.term .en{font-size:9px;color:#829079;font-family:var(--mono);text-align:right}.term p{font-size:11px;color:var(--muted);margin:4px 0 0}.help-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 35px}.help-grid details{border-bottom:1px solid var(--line);padding:14px 0;align-self:start}.help-grid summary{font-size:12px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:10px}.help-grid summary:after{content:"＋";color:#85967a;font-weight:400}.help-grid details[open] summary:after{content:"－"}.help-grid details p,.help-grid details ul{font-size:11px;color:var(--muted);line-height:1.9;margin:11px 0 0}.help-grid details ul{padding-left:18px}.repo-box{border:1px solid var(--line);border-radius:9px;padding:17px 20px;display:flex;justify-content:space-between;align-items:center;gap:18px;margin:26px 0 0;background:#fdfefb}.repo-box strong{display:block;font-size:12px;margin-bottom:4px}.repo-box .url{font:10px var(--mono);overflow-wrap:anywhere;color:var(--muted)}.copybtn{background:#fff;border:1px solid #cdd8c4;border-radius:5px;padding:8px 13px;font-size:11px;white-space:nowrap}.copy-fallback{display:none;width:100%;margin-top:9px;padding:7px;border:1px solid #bdcdb1;border-radius:4px;font:10px var(--mono)}.copy-status{font-size:10px;color:var(--green);margin-top:5px}.footer{border-top:1px solid var(--line);margin-top:28px;padding:19px 0 25px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;font-size:10px;color:#829078}.footer a{color:inherit}.footer p{margin:0}.footer .source-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:5px 13px;max-width:400px}.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.file-preview{width:100%;border:1px solid #dce3d5;border-radius:5px;text-align:left;overflow:hidden}.file-preview .filename{font:9px var(--mono);padding:7px 9px;background:#f1f5eb;border-bottom:1px solid #dce3d5}.file-preview .filetext{padding:14px 10px;font-size:10px;line-height:1.8}.mini-steps{display:flex;gap:6px;align-items:center;justify-content:center;margin-top:6px;color:#7b8b70;font-size:8px}.mini-steps span{background:#eef4e8;padding:3px 5px;border-radius:3px}.body-copy{font-size:10px;color:#6d7c62;line-height:1.8}.reset-dialog{border:1px solid #d4dfca;border-radius:10px;padding:24px;max-width:360px;background:var(--paper);color:var(--ink)}.reset-dialog::backdrop{background:#1e302b44}.reset-dialog h2{font-size:18px;margin:0 0 8px}.reset-dialog p{font-size:12px;color:var(--muted);margin:0 0 18px}.reset-dialog form{display:flex;justify-content:flex-end;gap:9px}
+    @media(min-width:1450px){.lesson-body{gap:40px}.desktop{min-height:375px}.desktop-content{min-height:274px}}
+    @media(max-width:1100px){.shell{padding:0 28px}.workspace{grid-template-columns:175px minmax(0,1fr);gap:22px}.lesson-body{grid-template-columns:1fr}.instructions{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}.lead{grid-column:1/-1}.action-list{grid-row:2/5}.success-check{margin-top:0;padding-top:0;border-top:0}.demo-area{margin-top:8px}.desktop{min-height:320px}.desktop-content{min-height:218px}.desktop-toolbar{grid-template-columns:1.4fr 1fr 1fr}.tool{padding:9px 12px}.screen-main p{font-size:10px}.dictionary{gap:0 22px}.role small{display:none}}
+    @media(max-width:700px){.shell{padding:0 19px}.topbar{padding:18px 0}.brand{font-size:16px}.brand-icon{width:29px;height:29px}.topnote{font-size:10px;max-width:130px;text-align:right}.intro{padding:27px 0 20px;align-items:start}.intro p{font-size:12px;line-height:1.8}.session{display:none}.rolebar{display:block;padding:0 0 17px}.role-control{justify-content:space-between}.role{padding:7px 12px;font-size:11px}.repo-short{margin-top:13px;font-size:10px}.repo-short a{font-size:10px}.concept-button{padding:12px 9px;gap:7px}.concept-num{display:none}.concept-button strong{font-size:10px}.concept-button span span{font-size:8px}.concept-explain{font-size:10px;min-height:50px;padding-top:9px}.workspace{grid-template-columns:1fr;gap:18px;padding-top:14px}.stepnav{position:static;padding:0;min-width:0}.nav-heading{margin:0 0 8px;font-size:10px}.progress-track{margin-bottom:11px}.steps{grid-template-columns:repeat(8,minmax(0,1fr));gap:4px}.stepbutton{padding:8px 0;display:flex;justify-content:center;border-radius:5px}.stepbutton .stepname{display:none}.stepnum{height:22px;width:22px;font-size:9px}.nav-foot{display:none}.lesson-top{padding-bottom:17px}.lesson h2{font-size:25px}.lesson-kicker{font-size:9px}.lesson-body{gap:16px}.instructions{display:block}.lead{font-size:13px;margin-bottom:16px}.action-list{gap:12px}.action-list li{font-size:12px}.success-check{border-top:1px solid var(--line);padding-top:12px;margin-top:17px}.warning{font-size:10px}.demo-label{font-size:9px}.desktop-titlebar{font-size:9px}.desktop-menu{font-size:8px;gap:13px}.desktop-toolbar{grid-template-columns:1.3fr 1fr .85fr}.tool{padding:9px 7px}.tool strong{font-size:8px}.tool small{font-size:7px}.desktop-content{grid-template-columns:36% 64%;min-height:227px}.screen-main{padding:16px 10px}.screen-main h3{font-size:12px}.screen-main p{font-size:9px}.file-tabs span{padding:9px 7px;font-size:8px}.file-row{font-size:7px;padding:10px 6px}.commit-form{padding:11px 6px 0}.fake-input{padding:5px;font-size:7px}.desktop-action{font-size:8px;padding:5px}.desktop-action small{font-size:7px}.hotspot:after{font-size:7px;top:-17px}.toolbar-hotspot:after{top:auto;bottom:-17px}.modal{padding:10px}.modal h3{font-size:10px}.screen-symbol{width:38px;height:38px;font-size:19px}.done-box{font-size:11px;padding:12px}.done-box small{font-size:9px}.lesson-nav{margin-top:14px}.navbtn{font-size:10px;padding:9px 13px}.support{margin-top:12px;padding:23px 0}.support-heading{display:block;margin-bottom:13px}.support-heading h2{font-size:18px}.support-heading span{display:block;font-size:10px;margin-top:4px}.dictionary{grid-template-columns:1fr 1fr;gap:0 19px}.term-head{display:block}.term .en{display:block;text-align:left;font-size:8px;margin-top:1px}.term b{font-size:11px}.term p{font-size:10px}.help-grid{grid-template-columns:1fr}.repo-box{padding:14px;align-items:start;gap:12px}.repo-box .url{font-size:9px}.copybtn{font-size:10px;padding:7px 10px}.footer{display:block;font-size:9px}.footer .source-links{margin-top:10px;justify-content:flex-start}.github-screen{padding:17px 14px}.pr-title{font-size:13px}.gh-wordmark{font-size:10px}.file-preview .filename{font-size:8px}.file-preview .filetext{font-size:9px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+    @media print{.topbar,.stepnav,.rolebar,.concept,.concept-explain,.demo-area,.lesson-nav,.done-box,.repo-box,.footer,.reset-dialog{display:none}.workspace,.lesson-body,.instructions{display:block}.shell{padding:0}.support{break-inside:avoid}body{background:white}.lesson h2{font-size:22px}}
+  </style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 5v14M17 5v4c0 5-10 2-10 7"/><circle cx="7" cy="4" r="2.4" fill="currentColor" stroke="none"/><circle cx="17" cy="4" r="2.4" fill="currentColor" stroke="none"/><circle cx="7" cy="20" r="2.4" fill="currentColor" stroke="none"/></svg></span>一起提交<span class="tag">FIELD GUIDE / 01</span></div>
+    <div class="topnote">GitHub Desktop 中文协作课<br>为两人的 Game Jam 准备</div>
+  </header>
+  <section class="intro" aria-labelledby="page-title">
+    <div><p class="eyebrow">开题前，先把协作跑通</p><h1 id="page-title">两个人，把改动合到一起。</h1><p>不用输入命令。照着界面，把第一次提交完整走一遍。</p></div>
+    <div class="session"><strong>约 20–30 分钟</strong>一个练习仓库 · 两个本地副本</div>
+  </section>
+  <div class="rolebar">
+    <div class="role-control"><span class="label">我现在是</span><div class="segmented" role="group" aria-label="选择你的身份"><button class="role" data-role="you" aria-pressed="true">我自己<small>fenglinr</small></button><button class="role" data-role="friend" aria-pressed="false">朋友<small>mingdizhiying</small></button></div></div>
+    <div class="repo-short"><span class="privacy">私有</span><a href="https://github.com/fenglinr/gamejam-collab-sandbox" target="_blank" rel="noopener">fenglinr / gamejam-collab-sandbox ↗</a></div>
+  </div>
+  <div class="concept" role="group" aria-label="点击理解三个地方的区别">
+    <button class="concept-button" data-concept="0" aria-pressed="true"><span class="concept-num">01</span><span><strong>你的工作副本</strong><span>改文件 · 提交到本地</span></span></button>
+    <button class="concept-button" data-concept="1" aria-pressed="false"><span class="concept-num">02</span><span><strong>GitHub 仓库</strong><span>推送上传 · 合并任务</span></span></button>
+    <button class="concept-button" data-concept="2" aria-pressed="false"><span class="concept-num">03</span><span><strong>朋友的工作副本</strong><span>拉取下载 · 接着开发</span></span></button>
+  </div>
+  <div class="concept-explain" id="concept-explain" aria-live="polite"><b>提交 ≠ 上传。</b>提交只是把一次修改记在你的电脑上，朋友还看不到。</div>
+  <div class="workspace" id="lesson-anchor">
+    <aside class="stepnav" aria-label="课程步骤">
+      <div class="nav-heading"><span>这次练习</span><span id="progress-text">0 / 8 已完成</span></div>
+      <div class="progress-track" role="progressbar" aria-label="实际操作完成进度" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" id="progress"><div class="progress-fill" id="progress-fill" style="width:0"></div></div>
+      <nav class="steps" id="steps"></nav>
+      <div class="nav-foot">在真实软件中做完一步，再勾选完成。示意图里的点击不会上传文件。<button id="reset-progress">重新开始当前身份的练习</button></div>
+    </aside>
+    <main class="lesson" id="lesson" aria-labelledby="lesson-title">
+      <div class="lesson-top"><div><p class="lesson-kicker" id="lesson-kicker"></p><h2 id="lesson-title" tabindex="-1"></h2></div><span class="stepcount" id="step-count"></span></div>
+      <div class="lesson-body"><div class="instructions" id="instructions"></div><div class="demo-area"><div class="demo-label"><span>跟着绿色提示，认识按钮位置</span><b>操作示意 · 不连接真实仓库</b></div><div class="desktop" id="desktop"></div><div class="demo-callout"><span class="dot"></span><span id="demo-caption"></span></div><div id="demo-action-note" class="demo-action-note" role="status"></div></div></div>
+      <label class="done-box"><input type="checkbox" id="step-done"><span id="done-label">我已在真实软件中完成这一步<small>这里只记录你的学习进度，不检查 GitHub 上的实际结果。</small></span></label>
+      <div class="lesson-nav"><button class="navbtn" id="previous">← 上一步</button><button class="navbtn primary" id="next">下一步 →</button></div>
+    </main>
+  </div>
+  <section class="support" aria-labelledby="dictionary-title"><div class="support-heading"><h2 id="dictionary-title">按钮不用背，忘了就看这里。</h2><span>此电脑已处理常用中文；其他电脑可按中英对照操作，GitHub 网页可能仍是英文。</span></div><div class="dictionary">
+    <div class="term"><div class="term-head"><b>获取更新</b><span class="en">Fetch origin</span></div><p>先看看 GitHub 上有没有新提交，不直接改你的文件。</p></div>
+    <div class="term"><div class="term-head"><b>拉取更新</b><span class="en">Pull origin</span></div><p>把远端当前分支的新提交取到这台电脑。</p></div>
+    <div class="term"><div class="term-head"><b>新建分支</b><span class="en">New branch</span></div><p>从当前版本开一条任务线，做完再合回 main。</p></div>
+    <div class="term"><div class="term-head"><b>提交到…</b><span class="en">Commit to…</span></div><p>把勾选的改动保存为一个本地版本，还没有上传。</p></div>
+    <div class="term"><div class="term-head"><b>发布分支 / 推送更改</b><span class="en">Publish branch / Push origin</span></div><p>把分支和提交上传到 GitHub，让合作者能取到。</p></div>
+    <div class="term"><div class="term-head"><b>预览 / 创建拉取请求</b><span class="en">Preview / Create Pull Request</span></div><p>检查这项任务的改动，申请把它合进 main。</p></div>
+    <div class="term"><div class="term-head"><b>合并拉取请求</b><span class="en">Merge pull request</span></div><p>在 GitHub 网页上把完成的任务合进目标分支。</p></div>
+    <div class="term"><div class="term-head"><b>确认合并</b><span class="en">Confirm merge</span></div><p>确认后，main 才正式包含这次任务的改动。</p></div>
+    <div class="term"><div class="term-head"><b>更改 / 历史记录</b><span class="en">Changes / History</span></div><p>前者看尚未提交的改动，后者看已经保存的版本。</p></div>
+  </div></section>
+  <section class="support" aria-labelledby="help-title"><div class="support-heading"><h2 id="help-title">遇到这些情况，再展开。</h2><span>第一轮只改各自的文本文件，先把闭环走通。</span></div><div class="help-grid">
+    <details><summary>main 和任务分支，到底是什么？</summary><p><strong>main 是你们共享的已完成版本。</strong>任务分支是从它分出来的一条修改路线。你在自己的分支做事，不会立即改变朋友使用的 main。任务完成后，通过拉取请求合回 main，朋友再拉取。</p><p>同一时刻，工作副本显示的是当前选中分支的文件。切换前先保存文件，并把当前任务的改动提交好。</p></details>
+    <details><summary>我提交了，朋友为什么还看不到？</summary><p>按顺序检查：① 你有没有点“发布分支 / 推送”？② 任务是否已合入 main？③ 朋友当前是否选中 main，并点了“获取更新 → 拉取”？</p><p>提交只保存在本地；推送会上传；合并会更新 main；拉取才把远端 main 带到朋友的电脑。</p></details>
+    <details><summary>朋友合并在先，我的分支落后了怎么办？</summary><p>工作区干净时，先切到 main，获取更新并拉取；再切回自己的任务分支。选择“分支 → 合并到当前分支…”（Branch → Merge into current branch…），选 main，把新内容合入自己的任务线。</p><p>检查结果后推送，再回到拉取请求。若出现冲突，先按下面的冲突说明处理，不要盲目选择覆盖。</p></details>
+    <details><summary>出现冲突，是不是把项目弄坏了？</summary><p>冲突说明两项修改需要你们决定如何组合。先停在当前任务分支，记下有冲突的文件。普通文本可以逐段决定保留内容；不知道应该留哪一版时，请对方一起判断。</p><p>Blender 文件等二进制资产不能像文本一样拼起来。Godot 场景即使是文本格式，处理后也要在引擎中打开检查。第一轮不同文件练习完成后，再有意练习一次文本冲突。</p></details>
+    <details><summary>模型、图片、音频怎么交接？</summary><p>这个仓库已经为常见二进制资产配置了 Git LFS。正常提交和推送时，GitHub Desktop 会交接这些文件；你不用把素材单独上传到另一个网站。</p><p>先在文件夹中查看下载的 <span class="inline-code">game/assets/audio/test-tone.wav</span>。它应当是一段可播放的短音频，而不是只有几行文字。大文件每次改动都会累积存储用量，练习阶段保持素材很小。</p></details>
+    <details><summary>为什么不在这一课里修改音频或模型？</summary><p>练习仓库的音频和部分源文件设为可锁定资产。GitHub Desktop 当前没有原生的 LFS 锁定按钮，所以第一次先练文本，音频只验证能否下载、播放。</p><p>真正修改同一个模型前，要先落实取锁与解锁的入口，并遵守同一文件由一人暂时负责的约定。这一步仍需单独配置和双账号实测；不要把只读限制强行绕开。</p></details>
+  </div></section>
+  <div class="repo-box"><div style="min-width:0"><strong>这次练习只用这个仓库</strong><div class="url">https://github.com/fenglinr/gamejam-collab-sandbox</div><div class="copy-status" id="copy-status" role="status"></div><input class="copy-fallback" id="copy-fallback" aria-label="请手动复制仓库地址" readonly value="https://github.com/fenglinr/gamejam-collab-sandbox.git"></div><button class="copybtn" id="copy-url">复制克隆地址</button></div>
+  <footer class="footer"><p>独立教学页 · 可离线打开 · 不访问你的账号或仓库<br>进度仅尝试保存在当前浏览器；不可用时，本次打开仍可练习。</p><div class="source-links"><a href="https://docs.github.com/en/desktop/adding-and-cloning-repositories/adding-a-repository-from-your-local-computer-to-github-desktop" target="_blank" rel="noopener">添加本地仓库 ↗</a><a href="https://docs.github.com/en/desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop" target="_blank" rel="noopener">克隆仓库 ↗</a><a href="https://docs.github.com/en/desktop/configuring-and-customizing-github-desktop/about-git-large-file-storage-and-github-desktop" target="_blank" rel="noopener">Desktop 与 LFS ↗</a></div></footer>
+</div>
+<dialog class="reset-dialog" id="reset-dialog"><h2>重新记录这轮练习？</h2><p>只清除本页当前身份的勾选，不会修改本地文件或 GitHub 仓库。</p><form method="dialog"><button class="navbtn" value="cancel">保留进度</button><button class="navbtn primary" value="reset">重新开始</button></form></dialog>
+<script>
+(() => {
+  'use strict';
+  const repo = 'https://github.com/fenglinr/gamejam-collab-sandbox.git';
+  const localPath = 'C:\\Users\\linra\\Documents\\Codex\\2026-10-27\\grill-me-c-users-linra-agents\\outputs\\gamejam-collab-sandbox';
+  const $ = id => document.getElementById(id);
+  let role = 'you';
+  let current = 0;
+  let completed = {you: Array(8).fill(false), friend: Array(8).fill(false)};
+  try {
+    const saved = JSON.parse(localStorage.getItem('together-desktop-lesson-v1'));
+    if (saved && ['you','friend'].every(key => Array.isArray(saved[key]) && saved[key].length === 8 && saved[key].every(item => typeof item === 'boolean'))) completed = saved;
+  } catch (_) {}
+  const names = ['把项目放进界面','先取到最新版本','为任务新建分支','修改自己的文件','提交，先保存在本地','推送，让远端收到','检查后合入 main','双方更新，完成交接'];
+  const conceptTexts = [
+    '<b>提交 ≠ 上传。</b>提交只是把一次修改记在你的电脑上，朋友还看不到。',
+    '<b>推送负责上传，合并负责汇总。</b>任务分支上传后，还要合入 main，才成为共同使用的版本。',
+    '<b>拉取才会更新这台电脑。</b>朋友选中 main，拉取远端的新提交，就能接着你的结果工作。'
+  ];
+  const branchName = () => role === 'you' ? 'task/you-first-change' : 'task/friend-first-change';
+  const fileName = () => role === 'you' ? 'you.txt' : 'friend.txt';
+  const filePath = () => 'practice/' + fileName();
+  const fileText = () => role === 'you' ? '我已完成第一次提交。' : '朋友已完成第一次提交。';
+  const summary = () => role === 'you' ? '练习：完成我的第一次修改' : '练习：完成朋友的第一次修改';
+  const en = text => '<span class="english">' + text + '</span>';
+  const code = text => '<span class="inline-code">' + text + '</span>';
+  const actionButton = (zh, english, action, extra = '') => '<button class="desktop-action ' + extra + '" data-demo="' + action + '">' + zh + (english ? '<small>' + english + '</small>' : '') + '</button>';
+  const modal = content => '<div class="modal">' + content + '</div>';
+  function desktopFrame(content, options = {}) {
+    const branch = current < 2 || current === 7 ? 'main' : branchName();
+    const tool = options.tool || '获取更新';
+    const toolEn = options.toolEn || 'Fetch origin';
+    const changed = options.changed || false;
+    const contentClass = options.contentClass || '';
+    return '<div class="desktop-titlebar"><span>GitHub Desktop</span><span class="window-controls" aria-hidden="true">− □ ×</span></div>' +
+      '<div class="desktop-menu"><span>文件</span><span>编辑</span><span>查看</span><span>仓库</span><span>分支</span><span>帮助</span></div>' +
+      '<div class="desktop-toolbar"><div class="tool"><small>当前仓库</small><strong>gamejam-collab-sandbox</strong></div><button class="tool ' + (options.branchHot ? 'hotspot toolbar-hotspot' : '') + '" data-demo="branch"><small>当前分支</small><strong>⑂ ' + branch + '</strong></button><button class="tool ' + (options.toolHot ? 'hotspot toolbar-hotspot' : '') + '" data-demo="' + (options.toolAction || 'fetch') + '"><small>' + toolEn + '</small><strong>↻ ' + tool + '</strong></button></div>' +
+      '<div class="desktop-content"><div class="file-sidebar"><div class="file-tabs"><span>更改</span><span>历史记录</span></div><div class="file-row ' + (changed ? '' : 'muted-row') + '"><span class="tiny-checkbox">' + (changed ? '☑' : '○') + '</span><span>' + (changed ? filePath() : '没有本地更改') + '</span></div><div class="commit-form"><div class="fake-input ' + (changed ? 'filled' : '') + '">' + (changed ? summary() : '摘要（必填）') + '</div><div class="fake-input commit-description">描述</div>' + (options.commitHot ? actionButton('提交到 ' + branch, 'Commit to ' + branch, 'commit', 'hotspot') : '<button class="desktop-action" disabled>提交到 ' + branch + '</button>') + '</div></div><div class="screen-main ' + contentClass + '">' + content + '</div></div>';
+  }
+  function stepData() {
+    const b = branchName(), f = filePath(), s = summary();
+    const startSelf = {
+      kicker:'01 / 连接已经准备好的项目', title:'把现有文件夹加进来。',
+      lead:'你的电脑已经有练习仓库。把这个文件夹交给 GitHub Desktop 管理即可。',
+      actions:[ '<strong>文件 → 添加本地仓库…</strong><br>' + en('File → Add local repository…'), '点“选择”，找到下面的目录：<span class="path">' + localPath + '</span>', '点<strong>添加仓库</strong>。左上角应显示 ' + code('gamejam-collab-sandbox') + '。'],
+      success:'看到正确的仓库名，当前分支是 main。',
+      caption:'添加本地仓库会使用已有文件，不需要重新下载一份，也不必新建仓库。',
+      demo:desktopFrame(modal('<h3>添加本地仓库</h3><label>本地路径</label><div class="fake-input path-in-modal">…\\outputs\\gamejam-collab-sandbox</div>' + actionButton('添加仓库','Add repository','add','hotspot')))
+    };
+    const startFriend = {
+      kicker:'01 / 在自己的电脑取得项目',title:'先接受邀请，再克隆。',
+      lead:'你需要自己的工作副本。登录自己的 GitHub 账号，不要使用朋友的账号。',
+      actions:[ '<strong>先接受仓库邀请。</strong><br>初始化时已向 mingdizhiying 发出邀请；请以 GitHub 当前显示为准。<br><a class="external-link" href="https://github.com/fenglinr/gamejam-collab-sandbox/invitations" target="_blank" rel="noopener">打开邀请页面 ↗</a>', '在 Desktop 点<strong>文件 → 克隆仓库… → URL</strong>。<span class="path">' + repo + '</span>', '选自己电脑上的一个普通本地目录，点<strong>克隆</strong>。Windows 和 Mac 的路径可以不同。'],
+      success:'仓库能打开；左上角显示 gamejam-collab-sandbox，当前分支是 main。',
+      caption:'私有仓库需要先接受邀请。若提示没有权限，先核对登录账号与邀请状态。',
+      demo:desktopFrame(modal('<h3>克隆仓库</h3><label>URL</label><div class="fake-input path-in-modal">github.com/fenglinr/<br>gamejam-collab-sandbox.git</div><label>本地路径</label><div class="fake-input">选择自己的项目目录</div>' + actionButton('克隆','Clone','clone','hotspot')))
+    };
+    return [role === 'you' ? startSelf : startFriend,
+      {kicker:'02 / 开始前先对齐版本', title:'先看看有没有新内容。', lead:'每次开始一个任务，先站到最新的 main 上。这样双方从同一份已完成版本出发。', actions:['在顶部<strong>当前分支</strong>中选择 ' + code('main') + '。', '点右上角<strong>获取更新</strong> ' + en('Fetch origin') + '。', '如果按钮变成<strong>拉取更新</strong> ' + en('Pull origin') + '，再点一次。没有新提交时，不出现“拉取”也正常。'], success:'当前分支是 main；更新结束，没有尚未处理的本地改动。', caption:'获取更新是检查；出现新提交后，“拉取”才会把文件更新到本地。', demo:desktopFrame('<div class="screen-symbol">↻</div><h3>开始前，先同步</h3><p>点击右上角的获取更新。<br>有新提交时，再点击拉取。</p>',{toolHot:true})},
+      {kicker:'03 / 一项任务，一条短分支', title:'给这次修改开一条任务线。', lead:'先把任务放在独立分支里。完成后再合进 main，避免把还没做完的内容直接交给对方。', actions:['点<strong>当前分支 → 新建分支</strong><br>' + en('Current branch → New branch'), '填写分支名：<span class="path">' + b + '</span>', '确认从 ' + code('main') + ' 开始，点<strong>创建分支</strong> ' + en('Create branch') + '。'], success:'顶部“当前分支”已经变成 ' + b + '。', caption:'分支名用来说明任务。它不是新文件夹，切换分支会切换同一工作副本里的版本。', demo:desktopFrame(modal('<h3>创建分支</h3><label>名称</label><div class="fake-input filled">' + b + '</div><div class="body-copy">从 main 创建</div><div style="height:10px"></div>' + actionButton('创建分支','Create branch','create-branch','hotspot')))},
+      {kicker:'04 / 现在去改一个真实文件', title:'你们先各改各的。', lead:'第一轮用两个独立文本文件练习。改一行字就足够，不需要会写 C#。', actions:['选<strong>仓库 → 在资源管理器中显示</strong>。Mac 上是<strong>在 Finder 中显示</strong>。<br>' + en('Repository → Show in Explorer / Finder'), '用记事本或任意文本编辑器打开：<span class="path">' + f + '</span>', '把内容改成下面这句话并保存：<span class="path">' + fileText() + '</span>'], success:'回到 Desktop，“更改”列表出现这个文件；点它能看到一行旧内容和一行新内容。', caption:'在你熟悉的编辑器里改文件，Desktop 自动显示差异。保存文件和提交版本是两个动作。', demo:desktopFrame('<div class="diff-view"><div class="diff-heading">' + f + '</div><div class="diff-old">− 尚未完成首次提交。</div><div class="diff-new">+ ' + fileText() + '</div></div><p style="margin-top:12px">红色是旧内容，绿色是新内容。</p>',{changed:true})},
+      {kicker:'05 / 留下可追溯的本地版本', title:'先提交，再上传。', lead:'“提交”会把这次修改记成一个版本。它还只在你的电脑上。', actions:['左侧只勾选这次要交接的 ' + code(f) + '，先确认没有无关文件。', '在左下角摘要里写清楚：<span class="path">' + s + '</span>', '点<strong>提交到 ' + b + '</strong>。<br>' + en('Commit to ' + b)], success:'更改列表清空；在“历史记录”中能找到刚才的摘要。', caption:'这一步像给修改存一个版本。朋友要收到，还需要下一步的“发布分支 / 推送”。', demo:desktopFrame('<div class="screen-symbol">✓</div><h3>把这一改记下来</h3><p>检查文件、填写摘要，<br>然后点击左下角提交。</p>',{changed:true,commitHot:true})},
+      {kicker:'06 / 把本地版本交给远端', title:'推送后，GitHub 才收到。', lead:'第一次上传这条分支，按钮叫“发布分支”；以后再上传同一分支，通常叫“推送”。', actions:['点右上角<strong>发布分支</strong> ' + en('Publish branch') + '。若已经发布过，点<strong>推送更改</strong> ' + en('Push origin') + '。', '等待上传结束。网络或权限报错时先看提示，确认账号和邀请，不要重复新建仓库。', '上传完成后，继续创建拉取请求，把这项任务合入 main。'], success:'界面不再提示有待上传的提交；GitHub 上能看到你的任务分支。', caption:'上传分支不等于已经合入 main。朋友日常使用 main，还需要下一步合并。', demo:desktopFrame('<div class="screen-symbol">↑</div><h3>发布你的任务分支</h3><p>把本地的提交上传到 GitHub，<br>接下来准备合并。</p>',{tool:'发布分支',toolEn:'Publish branch',toolHot:true,toolAction:'publish'})},
+      {kicker:'07 / 从个人任务汇入共同版本', title:'检查改动，再合入 main。', lead:'拉取请求（PR）就是这次任务的交接单。你们约定做完就合并，不要求等待另一人审批。', actions:['在 Desktop 点<strong>预览拉取请求 → 创建拉取请求</strong>。<br>' + en('Preview Pull Request → Create Pull Request'), '浏览器打开后，确认<strong>目标是 main，来源是 ' + b + '</strong>。检查 Files changed，只包含本次文件。', '创建后点<strong>合并拉取请求 → 确认合并</strong>。<br>' + en('Merge pull request → Confirm merge')], success:'GitHub 页面显示 Merged；这项任务已经进入远端 main。', warning:'两人先后合并即可。若提示分支落后或存在冲突，先展开下方的对应说明，不要直接覆盖。', caption:'GitHub 网页可能仍是英文。这里标出了最关键的两个按钮，操作前核对目标与来源。', demo:'<div class="browser-chrome"><span aria-hidden="true">←</span><span class="address">github.com / fenglinr / gamejam-collab-sandbox</span></div><div class="github-screen"><div class="gh-wordmark">GitHub · Pull request</div><div class="pr-title">' + s + '</div><div class="pr-badge">● Open</div><div class="branch-line">将 <code>' + b + '</code><br>合入 <code>main</code></div><div class="pr-check">✓ 已检查：只修改 ' + f + '</div>' + actionButton('合并拉取请求','Merge pull request','merge','hotspot') + '</div>'},
+      {kicker:'08 / 完成一次真正的双人交接', title:'回到 main，接到对方的改动。', lead:'GitHub 合并完成后，你的电脑不会自动切到新 main。两个人都需要做最后一次更新。', actions:['确认当前任务已提交并上传，再在<strong>当前分支</strong>中切回 ' + code('main') + '。', '点<strong>获取更新 → 拉取更新</strong>。<br>' + en('Fetch origin → Pull origin'), '双方任务都合并后，打开 ' + code('practice/you.txt') + ' 和 ' + code('practice/friend.txt') + '。确认两个人的改动都在。'], success:'双方电脑都保留两条修改，Desktop 没有未提交改动。这一次协作闭环完成。', caption:'下一项任务从更新后的 main 再开一条短分支。不要一直沿用上一项已完成任务的分支。', demo:desktopFrame('<div class="screen-symbol">✓</div><h3>两份修改，都收到了</h3><div class="file-preview"><div class="filename">practice/</div><div class="filetext">✓ you.txt：我已完成第一次提交。<br>✓ friend.txt：朋友已完成第一次提交。</div></div><div class="mini-steps"><span>双方合并</span>→<span>切回 main</span>→<span>拉取更新</span></div>',{tool:'拉取更新',toolEn:'Pull origin',toolHot:true,toolAction:'pull'})}
+    ];
+  }
+  function render() {
+    const data = stepData()[current];
+    $('lesson-kicker').textContent = data.kicker;
+    $('lesson-title').textContent = data.title;
+    $('step-count').textContent = String(current + 1).padStart(2,'0') + ' / 08';
+    $('instructions').innerHTML = '<p class="lead">' + data.lead + '</p><ol class="action-list">' + data.actions.map(a => '<li>' + a + '</li>').join('') + '</ol><div class="success-check"><strong>做到这样，就可以继续</strong>' + data.success + '</div>' + (data.warning ? '<div class="warning">' + data.warning + '</div>' : '');
+    $('desktop').innerHTML = data.demo;
+    $('demo-caption').textContent = data.caption;
+    $('demo-action-note').className = 'demo-action-note';
+    $('demo-action-note').textContent = '';
+    $('step-done').checked = completed[role][current];
+    $('previous').disabled = current === 0;
+    $('next').textContent = current === 7 ? '查看按钮词典 ↓' : '下一步 →';
+    $('steps').innerHTML = names.map((name,index) => '<button class="stepbutton ' + (completed[role][index] ? 'is-done' : '') + '" data-step="' + index + '" ' + (index === current ? 'aria-current="step"' : '') + ' aria-label="第' + (index + 1) + '步：' + name + (completed[role][index] ? '，已完成' : '') + '"><span class="stepnum">' + (completed[role][index] ? '✓' : String(index + 1).padStart(2,'0')) + '</span><span class="stepname">' + name + '</span></button>').join('');
+    const count = completed[role].filter(Boolean).length;
+    $('progress-text').textContent = count + ' / 8 已完成';
+    $('progress').setAttribute('aria-valuenow',String(count));
+    $('progress-fill').style.width = count / 8 * 100 + '%';
+  }
+  function go(index, focus = false) {
+    current = Math.max(0,Math.min(7,index));
+    render();
+    if(focus) {
+      $('lesson-title').focus({preventScroll:true});
+      const top = $('lesson-anchor').getBoundingClientRect().top;
+      if(top < -100 || window.innerWidth < 701) $('lesson-anchor').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+    }
+  }
+  function save() { try {localStorage.setItem('together-desktop-lesson-v1', JSON.stringify(completed));} catch (_) {} }
+  document.querySelectorAll('[data-role]').forEach(button => button.addEventListener('click',() => {
+    role = button.dataset.role;
+    document.querySelectorAll('[data-role]').forEach(item => item.setAttribute('aria-pressed',String(item.dataset.role === role)));
+    current = 0;
+    render();
+  }));
+  document.querySelectorAll('[data-concept]').forEach(button => button.addEventListener('click',() => {
+    document.querySelectorAll('[data-concept]').forEach(item => item.setAttribute('aria-pressed',String(item === button)));
+    $('concept-explain').innerHTML = conceptTexts[Number(button.dataset.concept)];
+  }));
+  $('steps').addEventListener('click',event => {const button = event.target.closest('[data-step]'); if(button) go(Number(button.dataset.step),true);});
+  $('previous').addEventListener('click',() => go(current - 1,true));
+  $('next').addEventListener('click',() => {if(current === 7) $('dictionary-title').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); else go(current + 1,true);});
+  $('step-done').addEventListener('change',event => {completed[role][current] = event.target.checked; save(); render(); $('step-done').focus();});
+  const demoMessages = {
+    add:'示意：仓库已加入。现在请到真实 GitHub Desktop 添加现有文件夹。',
+    clone:'示意：克隆完成。真实操作需要先接受邀请，再等文件下载结束。',
+    fetch:'示意：已检查更新；如有新提交，真实按钮会变成“拉取”。',
+    branch:'示意：这里切换分支，也可以选择“新建分支”。',
+    'create-branch':'示意：任务分支已创建。真实操作后，请核对顶部当前分支名。',
+    commit:'示意：提交已保存在本地，还没有上传。下一步是发布分支。',
+    publish:'示意：分支已上传。真实操作后，还要创建拉取请求、合入 main。',
+    pull:'示意：已取到远端 main。真实操作后，打开双方文件检查内容。',
+    merge:'示意：下一步是“确认合并 / Confirm merge”。确认后检查是否显示 Merged。'
+  };
+  $('desktop').addEventListener('click',event => {
+    const button = event.target.closest('[data-demo]');
+    if(!button) return;
+    $('demo-action-note').textContent = demoMessages[button.dataset.demo] || '这里只演示按钮位置，请在真实软件中完成操作。';
+    $('demo-action-note').className = 'demo-action-note visible';
+  });
+  $('copy-url').addEventListener('click',async() => {
+    try {
+      if(!navigator.clipboard || !navigator.clipboard.writeText) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(repo);
+      $('copy-status').textContent = '已复制克隆地址。';
+      $('copy-fallback').style.display = 'none';
+    } catch (_) {
+      $('copy-status').textContent = '浏览器未允许复制。请选中下面的完整地址，手动复制。';
+      $('copy-fallback').style.display = 'block';
+      $('copy-fallback').focus();
+      $('copy-fallback').select();
+    }
+  });
+  $('reset-progress').addEventListener('click',() => {
+    if(typeof $('reset-dialog').showModal === 'function') $('reset-dialog').showModal();
+    else if(window.confirm('只清除当前身份在本页的勾选进度？不会修改项目文件。')) {completed[role] = Array(8).fill(false); save(); go(0);}
+  });
+  $('reset-dialog').addEventListener('close',() => {if($('reset-dialog').returnValue === 'reset') {completed[role] = Array(8).fill(false);save();go(0);}});
+  render();
+})();
+</script>
+</body>
+</html>
