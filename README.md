@@ -6,6 +6,8 @@
 
 请阅读 [双人练习指南](docs/双人练习指南.md)。两人各用自己的 GitHub 账号、自己的本地副本；同一人使用另一台电脑时也单独克隆。
 
+初始化时已完成的检查与尚待双人实测的部分，见 [初始化验证记录](docs/初始化验证记录.md)。
+
 ```text
 game/samples/PlayerSettings.cs  C# 文本样例，可练习代码差异
 game/assets/audio/test-tone.wav 有效的短音频，由 Git LFS 保存，可练习资产交接与锁定
