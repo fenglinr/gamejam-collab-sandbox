@@ -1,0 +1,24 @@
+# Godot and C# generated files
+.godot/
+bin/
+obj/
+.vs/
+.idea/
+*.csproj.user
+*.suo
+*.user
+
+# Machine-specific files
+.DS_Store
+Thumbs.db
+.env
+.env.local
+.mcp.local.json
+
+# Local experiments and exports
+/scratch/
+/builds/
+*.blend[0-9]
+*.blend[0-9][0-9]
+
+# Keep asset.import files, *.uid, *.csproj and *.sln tracked.
